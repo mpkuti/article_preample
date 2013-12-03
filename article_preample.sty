@@ -1,0 +1,227 @@
+% paper title % can use linebreaks \\ within to get better formatting as desired
+% Do not put math or special symbols in the title.
+\title{\mytitle}
+\author{\myauthors}%
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% *** GRAPHICS RELATED PACKAGES ***
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pdftex]{graphicx}
+% declare the path(s) where your graphic files are
+\graphicspath{{./fig/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+\DeclareGraphicsExtensions{.pdf} %,.jpeg,.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[siunitx]{circuitikz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pgfplotsset{plot coordinates/math parser=false}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% WIDTH & HEIGHT:
+\newlength\figureheight
+\newlength\figurewidth
+% default size is 88.9mm (1 column width):
+% 182mm would be the width of 2-column-figure
+\setlength\figureheight{88.9mm}
+\setlength\figurewidth{88.9mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SET THE GLOBAL FONT FOR THE TIKZ-FIGURES:
+\tikzset{%
+	% FONT OF CIRCUITIKZ AND PGFPLOTS FIGURES:
+	font=\footnotesize,
+	% FONT OF TIKZ-TIMING DIAGRAMS:
+	timing/.style={timing/font=\footnotesize}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TIKZ-FIGURES:
+\pgfplotsset{%
+	/pgfplots/tick align=outside,
+	/pgfplots/tick style={solid, black, thin},
+	%/pgfplots/grid style={solid, black, thin}
+	%/pgfplots/grid style={solid, black, ultra thin},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SET PLOT APPEARANCE CYCLE FOR PGFPLOTS:
+\pgfplotscreateplotcyclelist{mycycle}{%
+	{black, solid, line width=1.0pt, mark=*, mark options={solid, fill=black}, mark size=1.9pt,},
+	{black, solid, line width=1.0pt, mark=*, mark options={solid, fill=white}, mark size=1.9pt,},
+	{black, solid, line width=1.0pt, mark=square*, mark options={solid, fill=black}, mark size=1.75pt,},
+	{black, solid, line width=1.0pt, mark=square*, mark options={solid, fill=white}, mark size=1.75pt,},
+	{black, solid, line width=1.0pt, mark=triangle*, mark options={solid, fill=black}, mark size=2.2pt,},
+	{black, solid, line width=1.0pt, mark=triangle*, mark options={solid, fill=white}, mark size=2.2pt,},
+	{black, solid, line width=1.0pt, mark=diamond*, mark options={solid, fill=black}, mark size=2.3pt,},
+	{black, solid, line width=1.0pt, mark=diamond*, mark options={solid, fill=white}, mark size=2.3pt,},
+	{black, solid, line width=1.0pt, mark=pentagon*, mark options={solid, fill=black}, mark size=2.1pt,},
+	{black, solid, line width=1.0pt, mark=pentagon*, mark options={solid, fill=white}, mark size=2.1pt,},
+	{black, solid, line width=1.0pt, mark=otimes*, mark options={solid, fill=white}, mark size=1.9pt,},
+	{black, solid, line width=1.0pt, mark=oplus*, mark options={solid, fill=white}, mark size=1.9pt,},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FOR TABLES:                        %%
+\usepackage{multirow}                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% INPUT PARTS OF A FILE:
+% \usepackage{catchfilebetweentags}
+%% define command to load figures,
+%% call the package mac% ro to load chunk from file
+% \newcommand{\loadFig}[1]
+% {
+% 	\ExecuteMetaData[{figures/figures.tex}]{#1}
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% THE RECOMMENDED WAY TO LOAD SUBFIG.STY:
+%%
+\ifCLASSOPTIONcompsoc
+	\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+	\usepackage[caption=false,font=footnotesize]{subfig}	
+\fi
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SUBCAPTION IS NOT RECOMMENDED!!!   %%
+%\makeatletter
+%\let\MYcaption\@makecaption
+%\makeatother
+%\usepackage[font=footnotesize, justification=centering]{subcaption}
+%\captionsetup{subrefformat=parens}
+%\makeatletter
+%\let\@makecaption\MYcaption
+%\makeatother
+%% END OF NOT RECOMMENDED!!!          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/url/
+% Basically, \url{my_url_here}.
+
+% NOTE: PDF hyperlink and bookmark features are not required in IEEE
+%       papers and their use requires extra complexity and work.
+% *** IF USING HYPERREF BE SURE AND CHANGE THE EXAMPLE PDF ***
+% *** TITLE/SUBJECT/AUTHOR/KEYWORDS INFO BELOW!!           ***
+\newcommand\MYhyperrefoptions{%
+	bookmarks=true,%
+	bookmarksnumbered=true,%
+	pdfpagemode={UseOutlines},%
+	plainpages=false,%
+	pdfpagelabels=true,%
+	colorlinks=true,%
+	linkcolor={black},%
+	citecolor={black},%
+	urlcolor={black},%
+	pdftitle={\mytitle},%
+	pdfsubject={\mysubject},%
+	pdfauthor={Mika~Kutila, Ari~Paasio and Teijo~Lehtonen},%
+	pdfkeywords={Near-Threshold Computing, 6T SRAM, Energy efficiency},
+	pdfcreator={\myauthor},%
+	pdfproducer={\myauthor}%
+	}%
+%\ifCLASSINFOpdf
+\usepackage[\MYhyperrefoptions,pdftex]{hyperref}
+%\else
+%\usepackage[\MYhyperrefoptions,breaklinks=true,dvips]{hyperref}
+%\usepackage{breakurl}
+%\fi
+% One significant drawback of using hyperref under DVI output is that the
+% LaTeX compiler cannot break URLs across lines or pages as can be done
+% under pdfLaTeX's PDF output via the hyperref pdftex driver. This is
+% probably the single most important capability distinction between the
+% DVI and PDF output. Perhaps surprisingly, all the other PDF features
+% (PDF bookmarks, thumbnails, etc.) can be preserved in
+% .tex->.dvi->.ps->.pdf workflow if the respective packages/scripts are
+% loaded/invoked with the correct driver options (dvips, etc.). 
+% As most IEEE papers use URLs sparingly (mainly in the references), this
+% may not be as big an issue as with other publications.
+%
+% That said, Vilar Camara Neto created his breakurl.sty package which
+% permits hyperref to easily break URLs even in dvi mode.
+% Note that breakurl, unlike most other packages, must be loaded
+% AFTER hyperref. The latest version of breakurl and its documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/breakurl/
+% breakurl.sty is not for use under pdflatex pdf mode.
+%
+% The advanced features offer by hyperref.sty are not required for IEEE
+% submission, so users should weigh these features against the added
+% complexity of use.
+% The package options above demonstrate how to enable PDF bookmarks
+% (a type of table of contents viewable in Acrobat Reader) as well as
+% PDF document information (title, subject, author and keywords) that is
+% viewable in Acrobat reader's Document_Properties menu. PDF document
+% information is also used extensively to automate the cataloging of PDF
+% documents. The above set of options ensures that hyperlinks will not be
+% colored in the text and thus will not be visible in the printed page,
+% but will be active on "mouse over". USING COLORS OR OTHER HIGHLIGHTING
+% OF HYPERLINKS CAN RESULT IN DOCUMENT REJECTION BY THE IEEE, especially if
+% these appear on the "printed" page. IF IN DOUBT, ASK THE RELEVANT
+% SUBMISSION EDITOR. You may need to add the option hypertexnames=false if
+% you used duplicate equation numbers, etc., but this should not be needed
+% in normal IEEE work.
+% The latest version of hyperref and its documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/
+
+%------------------------------------------------------------
+%% Hyperref uses this string as prefix in chapter references:
+%% (without this line, the chapter is not capitalized)
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Subsection}
+\renewcommand*{\subsubsectionautorefname}{Subsubsection}
+%------------------------------------------------------------
+
+% VARIABLES:
+\newcommand{\var}[1]{\begin{math} #1 \end{math}}
+\newcommand{\varnot}[1]{\begin{math} \overline{#1} \end{math}}
+
+% CONSTANTS:
+\newcommand{\goldenratio}{0.61803398875}
+
+% COMMENTS:
+%\newcommand{\comment}[1]{\textcolor{blue}{\fbox{#1}}}
+\usepackage{todonotes}
+\newcommand{\comment}[1]{\todo[inline]{#1}}
+
+% MANAGE SI UNITS:
+\usepackage{siunitx}
+\sisetup{group-minimum-digits = 4}
