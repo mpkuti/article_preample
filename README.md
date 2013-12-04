@@ -1,7 +1,7 @@
 article_preample
 ================
 
-My LaTeX preample, to be used used with the document class IEEEtran.
+My LaTeX preample, to be used used with the document class IEEEtran. The file *article_preample.sty* should be placed to the same folder with the project, or somewhere else where the compiler can find it.
 
 main.tex:
 ---------
